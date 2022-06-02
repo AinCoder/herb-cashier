@@ -114,7 +114,7 @@ class Cashier
         /*For dynamic change the API key*/
         $apiKey = $options['api_key'] ?? config('cashier.secret');
         if (user()->hasRole('User')){ //Let's check if the user is customer
-            $apiKey = user()->agency->get('stripe_secret_key', null);
+            $apiKey = user()->agency()->get('stripe_secret_key', null);
         }
         return new StripeClient(array_merge([
             'api_key' => $apiKey,
