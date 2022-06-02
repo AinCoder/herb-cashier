@@ -7,6 +7,7 @@ use Money\Currency;
 use Money\Formatter\IntlMoneyFormatter;
 use Money\Money;
 use NumberFormatter;
+use phpDocumentor\Reflection\Types\This;
 use Stripe\BaseStripeClient;
 use Stripe\Customer as StripeCustomer;
 use Stripe\StripeClient;
@@ -114,7 +115,7 @@ class Cashier
         /*For dynamic change the API key*/
         $apiKey = $options['api_key'] ?? config('cashier.secret');
         if (user()->hasRole('User')){
-            $apiKey = user()->agency()->get('stripe_secret_key', null);
+            $apiKey = user()->agency->get('stripe_secret_key', null);
         }
         return new StripeClient(array_merge([
             'api_key' => $apiKey,
