@@ -17,5 +17,4 @@ trait Billable
     use ManagesPaymentMethods;
     use ManagesSubscriptions;
     use PerformsCharges;
-    public string $apiKey = 'No';
 }

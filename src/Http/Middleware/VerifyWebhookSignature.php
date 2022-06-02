@@ -22,7 +22,7 @@ class VerifyWebhookSignature
     {
         $webhookSecret = config('cashier.webhook.secret');
         if (user()->hasRole('User')){
-            $webhookSecret = user()->agency()->get('stripe_webhook_secret', null);
+            $webhookSecret = user()->agency->get('stripe_webhook_secret', null);
         }
         try {
             WebhookSignature::verifyHeader(

@@ -81,7 +81,7 @@ class Checkout implements Arrayable, Jsonable, JsonSerializable, Responsable
     {
         $apiKey = config('cashier.key');
         if (user()->hasRole('User')){
-            $apiKey = user()->agency()->get('stripe_public_key', null);
+            $apiKey = user()->agency->get('stripe_public_key', null);
         }
         return View::make('cashier::checkout', array_merge([
             'label' => $label,
