@@ -111,7 +111,9 @@ class Cashier
      */
     public static function stripe(array $options = [])
     {
+        // First try to get the key from env
         $apiKey = config('cashier.secret');
+        //If it's customer try to get the key from customer agency
         if (user()->hasRole('User')){
             $apiKey = user()->agency->get('stripe_secret_key', null);
         }
